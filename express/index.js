@@ -25,5 +25,24 @@ app.get("/bye",(req,res)=> {
         name:"joe"
     });
 })
+app.use(express.json())
+app.post("/hi",(req,res)=>{
+    // let data = "";
+    // req.on("data" , (info) => {
+    //   data += info;
+    // })
+    // req.on("end",() => {
+    //     const obj =JSON.parse(data)
+        // console.log(obj.name)
+        //express.json-i depqum >>>>>>>>>>>>
+        console.log(req.body.name)
+        res.send("ameninch lave ")
+
+    });
+// });
+
+//for not to write all of this ,we can use express middleware that cam handle respons soo
+
+
 
 app.listen(3001)
