@@ -1,0 +1,18 @@
+const fs = require("fs");
+const file = "./file.txt";
+
+try {
+    // Remove all read permissions (for user, group, and others)
+    fs.chmodSync(file,
+        fs.constants.S_IWUSR | // User write
+        fs.constants.S_IXUSR | // User execute (optional)
+        fs.constants.S_IWGRP | // Group write (optional)
+        fs.constants.S_IXGRP | // Group execute (optional)
+        fs.constants.S_IWOTH | // Others write (optional)
+        fs.constants.S_IXOTH   // Others execute (optional)
+    );
+
+    console.log(`Read permissions for ${file} have been removed.`);
+} catch (err) {
+    console.error("Error changing file permissions:", err.message);
+}
